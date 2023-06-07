@@ -19,4 +19,32 @@ const RegistrationForm = () => {
       }
     };
 
+    return (
+        <div>
+          <h2>Registration Form</h2>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button type="submit">Register</button>
+          </form>
+        </div>
+      );
+    };
+
 export default RegistrationForm;
