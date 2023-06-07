@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Navbar from './Navbar';
 
 const AppointmentList = () => {
-    const [appointments, setAppointments] = useState([]);
+  const [appointments, setAppointments] = useState([]);
 
-    useEffect(() => {
-      // Fetch the list of appointments from the backend API
-      const fetchAppointments = async () => {
-        try {
-          const response = await axios.get('http://localhost:9292/appointments');
-          setAppointments(response.data);
-        } catch (error) {
-          console.error(error);
-        }
-      };
+  useEffect(() => {
+    // Fetch the list of appointments from the backend API
+    const fetchAppointments = async () => {
+      try {
+        const response = await axios.get('http://localhost:9292/appointments');
+        setAppointments(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
-      fetchAppointments();
-    }, []);
-
-
+    fetchAppointments();
+  }, []);
 
   return (
     <div>
+      <Navbar appointmentCount={appointments.length} />
       <h2>Appointments</h2>
       <ul>
         {appointments.map((appointment) => (

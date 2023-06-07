@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './BookingForm.css';
 
 const BookingForm = () => {
     const [hospital, setHospital] = useState('');
@@ -21,7 +22,7 @@ const BookingForm = () => {
     };
 
     return (
-        <div>
+        <div className="booking-form-container">
           <h2>Booking Form</h2>
           <form onSubmit={handleSubmit}>
             <input

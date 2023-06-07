@@ -1,0 +1,214 @@
+.footer-container {
+    position: relative;
+    background-color: lightblue;
+    color: black;
+  }
+
+  .footer-container .copyright {
+    text-align: center;
+    padding: 10px;
+    background-color: lightblue;
+  }
+
+  .dropdown-content {
+    display: none;
+  }
+
+  .dropdown-content.active {
+    display: block;
+    background-color: lightblue;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    z-index: 1;
+  }
+
+  .dropdown-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+  }
+
+  .dropdown-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .dropdown-icon svg {
+    width: 20px;
+    height: 20px;
+    color: #fff;
+  }
+
+  .dropdown-icon:hover {
+    background-color: #fff;
+  }
+
+  .dropdown-icon:hover svg {
+    color: #000;
+  }
+
+  .about-us-popup,
+  .social-media-popup,
+  .download-app-popup {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 999;
+  }
+
+  .about-us-popup.active,
+  .social-media-popup.active,
+  .download-app-popup.active {
+    display: block;
+  }
+
+  .about-us-popup .close-btn,
+  .social-media-popup .close-btn,
+  .download-app-popup .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+  }
+
+  .link-button,
+  .social-link {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: lightblue;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .link-button:hover,
+  .social-link:hover {
+    background-color: #0066cc;
+  }
+
+  .app-store-btn,
+  .play-store-btn {
+    display: inline-block;
+    padding: 10px;
+    background-color: lightblue;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .app-store-btn:hover,
+  .play-store-btn:hover {
+    background-color: #0066cc;
+  }
+
+  .footer-container .about-us h3:hover,
+  .footer-container .social-media h3:hover,
+  .footer-container .app-buttons h3:hover {
+    color: white;
+  }
+
+  .issue-popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .issue-popup form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+  }
+
+  .issue-popup .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .issue-popup input[type="text"],
+  .issue-popup input[type="email"],
+  .issue-popup textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .issue-popup textarea {
+    height: 100px;
+  }
+
+  .issue-popup button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: lightblue;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+
+  .issue-popup button[type="submit"]:hover {
+    background-color: #0066cc;
+  }
+
+  .issue-popup .close-btn {
+    position: absolute;
+    top: -90px;
+    left: 1070px;
+    right: -10px; /* Adjust the right value as per your preference */
+    width: 30px; /* Increased size */
+    height: 30px; /* Increased size */
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: red;
+    font-size: 20px; /* Adjust the font size as per your preference */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
