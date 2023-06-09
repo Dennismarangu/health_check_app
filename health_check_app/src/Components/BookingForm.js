@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './BookingForm.css';
 
-const BookingForm = () => {
+const BookingForm = ({ hospitals }) => {
   const [hospital, setHospital] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');

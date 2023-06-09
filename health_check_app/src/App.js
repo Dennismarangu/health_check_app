@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import RegistrationForm from './Components/RegistrationForm';
@@ -8,15 +8,32 @@ import Home from './Components/Home';
 import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
 import LoginForm from './Components/LoginForm';
+import axios from 'axios';
+
 
 const App = () => {
   const [userRegistered, setUserRegistered] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const [hospitals, setHospitals] = useState([]);
 
   const handleRegistrationSuccess = (userData) => {
     setUserRegistered(true);
     setLoggedInUser(userData.user);
   };
+
+  useEffect(() => {
+    // Fetch the hospitals data from the backend API
+    const fetchHospitals = async () => {
+      try {
+        const response = await axios.get('http://localhost:9292/hospitals');
+        setHospitals(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchHospitals();
+  }, []);
 
   return (
     <div className="App">
@@ -41,7 +58,10 @@ const App = () => {
           />
           {userRegistered ? (
             <>
-              <Route path="/booking" element={<BookingForm />} />
+              <Route
+                path="/booking"
+                element={<BookingForm hospitals={hospitals} />}
+              />
               <Route path="/appointments" element={<AppointmentList />} />
             </>
           ) : (

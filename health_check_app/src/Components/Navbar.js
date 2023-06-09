@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { IoIosCalendar, IoIosPerson } from 'react-icons/io';
+import { IoIosCalendar, IoIosPerson, IoIosChatboxes } from 'react-icons/io';
 import './Navbar.css';
+import axios from 'axios';
+
 
 const Navbar = ({ appointmentCount, userRegistered, loggedInUser }) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
+  const [showPopup, setShowPopup] = useState(false);
+  const [replies, setReplies] = useState([]);
 
   useEffect(() => {
     setShowDropdown(false); // Close the dropdown menu on component updates
@@ -13,6 +17,18 @@ const Navbar = ({ appointmentCount, userRegistered, loggedInUser }) => {
 
   const toggleDropdown = () => {
     setShowDropdown((prevState) => !prevState);
+    setShowPopup(false);
+  };
+
+  const openPopup = async () => {
+    try {
+      // Fetch the text replies from the backend API
+      const response = await axios.get('http://localhost:9292/replies');
+      setReplies(response.data);
+      setShowPopup(true);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleLogout = () => {
@@ -48,6 +64,22 @@ const Navbar = ({ appointmentCount, userRegistered, loggedInUser }) => {
             </div>
           )}
         </div>
+
+        <IoIosChatboxes className="navbar-message-icon" onClick={openPopup} />
+        {showPopup && (
+          <div className="navbar-popup">
+            <h3>Text Replies</h3>
+            {replies.length > 0 ? (
+              <ul>
+                {replies.map((reply, index) => (
+                  <li key={index}>{reply}</li>
+                ))}
+              </ul>
+            ) : (
+              <p>No replies available.</p>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
