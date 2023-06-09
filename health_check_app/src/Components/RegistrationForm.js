@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './RegistrationForm.css';
 
-
-const RegistrationForm = () => {
+const RegistrationForm = ({ setUserRegistered, handleRegistrationSuccess }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if the user identifier exists in localStorage
+    const userIdentifier = localStorage.getItem('userIdentifier');
+    if (userIdentifier) {
+      setUserRegistered(true);
+    }
+  }, [setUserRegistered]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,11 +24,16 @@ const RegistrationForm = () => {
     try {
       // Make a POST request to the backend API to create a new user
       const response = await axios.post('http://localhost:9292/users', newUser);
-      console.log(response.data); // Handle the response data as needed
+      console.log(response.data);
 
-      // Navigate to the booking system and appointment list
+      // Store the user identifier in localStorage
+      localStorage.setItem('userIdentifier', response.data.user_id);
+
+      // Call the handleRegistrationSuccess function with the user data
+      handleRegistrationSuccess(response.data);
+
+      // Navigate to the booking page
       navigate('/booking');
-      navigate('/appointments');
     } catch (error) {
       console.error(error);
     }

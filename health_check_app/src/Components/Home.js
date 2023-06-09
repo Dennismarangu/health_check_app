@@ -1,7 +1,8 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
 
-const Home = () => (
+const Home = ({ userRegistered }) => (
   <div className="home-container">
     <div className="home-content">
       <p className="home-text">
@@ -9,8 +10,14 @@ const Home = () => (
       </p>
     </div>
     <div className="home-buttons">
-      <Link to="/registration" className="home-button">Register</Link>
-      <Link to="/login" className="home-button">Login</Link>
+      {userRegistered ? (
+        <Link to="/booking" className="home-button">Book Appointment</Link>
+      ) : (
+        <>
+          <Link to="/registration" className="home-button">Register</Link>
+          <Link to="/login" className="home-button">Login</Link>
+        </>
+      )}
     </div>
   </div>
 );

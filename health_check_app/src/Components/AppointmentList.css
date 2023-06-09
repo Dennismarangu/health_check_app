@@ -1,7 +1,22 @@
-.appointment-controls {
+.appointment-container {
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .appointment-container:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: lightblue; /* Add background color on hover */
+  }
+
+  .appointment-controls {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 0 20px;
   }
 
   .appointment-controls input[type="text"] {
@@ -37,16 +52,31 @@
 
   li {
     margin-bottom: 20px;
-    padding: 10px;
-    background-color: #f5f5f5;
-    border-radius: 5px;
   }
 
-  p {
+  .appointment-container p {
     margin: 0;
   }
 
-  p:first-child {
+  .appointment-container p:first-child {
     font-weight: bold;
     margin-bottom: 5px;
+  }
+
+  .edit-icon,
+  .delete-icon {
+    margin-top: 5px;
+    display: inline-block;
+    padding: 5px 8px;
+    background-color: #ccc;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+    margin-left: 5px;
+  }
+
+  .edit-icon:hover,
+  .delete-icon:hover {
+    background-color: #aaa;
   }
